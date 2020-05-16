@@ -1,2 +1,2 @@
 language = "csharp"
-run = "mono main.cs"
+run = "mcs -out:main.exe -pkg:dotnet *.cs\nmono ./main.exe"
