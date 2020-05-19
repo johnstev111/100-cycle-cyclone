@@ -15,11 +15,10 @@ namespace Cyclone {
       MainTools.ColouWrite(true, "Welcome to the Fifty Cycle Cyclone!", ConsoleColor.Yellow);
       System.Threading.Thread.Sleep(576);
       MainTools.ColouWrite(true, "The game where you have to defeat incoming cyclones, and stop them wreaking havoc!", ConsoleColor.DarkCyan);
-      Tornado Poop = new Tornado(index);
-      MainTools.CycloneCheck(torn, Poop.names.Count);
-      //Console.WriteLine("DEBUG");
-      Console.WriteLine(Poop.Name + " - " + Poop.Type);
-      Console.WriteLine(Poop.Storm);
+      Tornado First = new Tornado(index);
+      MainTools.CycloneCheck(torn, First.names.Count);
+      Console.WriteLine(First.Name + " - " + First.Type);
+      Console.WriteLine(First.Storm);
     }
   }
 }

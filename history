@@ -1,3 +1,0 @@
-cd ..\Documents\SORT-DIR\csproj\50-cycle-cyclone\
-csc -target:library -out:tools.dll dll\tools.cs
-csc -out:main.exe *.cs -reference:tools.dll
