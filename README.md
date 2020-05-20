@@ -1,3 +1,3 @@
-# 50-cycle-cyclone  [![Run on Repl.it](https://repl.it/badge/github/johnstev111/50-cycle-cyclone)](https://repl.it/@johnstev111/50-cycle-cyclone)
+# 50-cycle-cyclone  [![Run on Repl.it](https://repl.it/badge/github/johnstev111/50-cycle-cyclone)](https://repl.it/@johnstev111/50-cycle-cyclone) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/johnstev111/50-cycle-cyclone?color=%239f9f9f&logo=repl.it&logoColor=%23dddddd&style=flat-square)
 For my 50 cycle milestone (maybe more because of delays) on repl.it.
 ###### Well yes. I don't know what to put here, so  I shrunk.
