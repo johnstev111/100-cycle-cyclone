@@ -1,49 +1,42 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using CycloneTools.Toolkit;
 
 namespace Cyclone {
   public class Tornado {
     byte index;
-    public Dictionary<string, string> names = new Dictionary<string, string>();
-    private sbyte[] strengths = {127, 42, 85, 111, 30, 99, 91, 64, 13};
-    private sbyte currStrength;
+    public StormData[] names = new StormData[9];
     public Tornado(){
-      names["Dorra"] = "So powerful you can’t see it coming. So powerful you don’t even know about it.";
-      names["SuperSlimy"] = "Goop?";
-      names["ImplausibleSantaClaus"] = "This one blows your presents away at Christmas.";
-      names["Volcano"] = "Pompeii met a Cyclone.";
-      names["Poop"] = "Manure! I hate manure!";
-      names["Sharknado"] = "Beware! Shark is Death!";
-      names["AgentSquidnado"] = "It's dynamic.";
-      names["Sourkraut"] = "I wouldn't eat this if I were you.";
-      names["Celery"] = "Just stop with the vegetables!";
-      index = Convert.ToByte(new Random().Next(0, names.Count));
-      if (names.Count != strengths.Length) {
-        throw new IndexOutOfRangeException("Incorrect number of health values in strength. How did we get here?");
-      }
-      currStrength = strengths[index];
+      names[0] = new StormData("Dorra", "So powerful you can’t see it coming. So powerful you don’t even know about it.", 127);
+      names[1] = new StormData("SuperSlimy", "Goop?", 42);
+      names[2] = new StormData("ImplausibleSantaClaus", "This one blows your presents away at Christmas.", 85);
+      names[3] = new StormData("Volcano", "Pompeii met a Cyclone.", 111);
+      names[4] = new StormData("Poop", "Manure! I hate manure!", 30);
+      names[5] = new StormData("Sharknado", "Beware! Shark is Death!", 99);
+      names[6] = new StormData("AgentSquidnado", "It's dynamic.", 91);
+      names[7] = new StormData("Sourkraut", "I wouldn't eat this if I were you.", 64);
+      names[8] = new StormData("Celery", "Just stop with the vegetables!", 13);
+      index = Convert.ToByte(new Random().Next(0, names.Length));
     }
     public sbyte Health{
-      get => currStrength;
-      set => currStrength = value;
+      get => names[index].Health;
+      set => names[index].Health = value; // Passthrough
     }
     public string Name{
-        get => names.Keys.ToArray()[index];
+        get => names[index].Name;
     }
     public string Type{
-        get => names.Values.ToArray()[index];
+        get => names[index].Desc;
     }
     public string Storm{
-      get => @"--_-_-_-_---
-   -_-_-_
-    -_-_-
-     -__-
-    _-_
-   _-
-   -_
-    _-_";
+      get => @"——_—_—_—_———
+   —_—_—_
+    —_—_—
+     —__—
+    _—_
+   _—
+   —_
+    _—_";
     }
     public override string ToString() { return $"Cyclone {this.Name}"; }
     }
-}
+}                                            
