@@ -14,6 +14,10 @@ namespace Cyclone {
       get => name.Health;
       set => name.Health = value; // Passthrough
     }
+    public sbyte Damage{
+      get => name.Damage;
+      set => name.Damage = value;
+    }
     public string Name{
         get => name.Name;
     }
@@ -31,16 +35,16 @@ namespace Cyclone {
    _-
    -_
     _-_"; } else {
-      return @"==========
+      return @"===----===
   ++++++
    ----
     ===
      --
     ++
-   ++";
+   +";
         }
       }
     }
     public override string ToString() => $"Cyclone {this.Name}";
   }
-}                                            
+}

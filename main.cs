@@ -10,12 +10,21 @@ namespace Cyclone {
       MainTools.ColouWrite(true, "Welcome to the Fifty Cycle Cyclone!", ConsoleColor.Yellow);
       System.Threading.Thread.Sleep(576);
       MainTools.ColouWrite(true, "The game where you have to defeat incoming cyclones, and stop them wreaking havoc!", ConsoleColor.DarkCyan);
-      Tornado First = new Tornado();
-      Console.WriteLine(First.Name + " - " + First.Type);
-      Console.WriteLine(First.Storm);
-      Console.WriteLine(First.Health);
-      First.Health -= 50;
-      Console.WriteLine(First.Health);
+      byte cq = 0;
+      while (true) {
+        cq += Convert.ToByte(1);
+        Tornado main = new Tornado();
+        Player You = new Player(main, cq);
+        Console.WriteLine(main.Name + " - " + main.Type);
+        Console.WriteLine(main.Storm);
+        You.Fight();
+        MainTools.ColouWrite(true, "Would you like to fight another cyclone? (y/n)", ConsoleColor.DarkYellow);
+        string there = Console.ReadLine();
+        if (there=="n") { break; }
+        else if (there=="N") { break; }
+        else if (there=="no") { break; }
+        else { Console.Clear(); continue; }
+      }
     }
   }
 }
