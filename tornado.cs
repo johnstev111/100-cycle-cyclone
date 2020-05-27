@@ -4,8 +4,6 @@ using CycloneTools.Toolkit;
 
 namespace Cyclone {
   public class Tornado {
-    [DllImport("tools.dll", CharSet = CharSet.Unicode)]
-    public static extern void Case();
     StormData name;
     public Tornado(){
       name = MainTools.Case();
@@ -21,7 +19,7 @@ namespace Cyclone {
     public string Name{
         get => name.Name;
     }
-    public string Type{
+    public string Desc{
         get => name.Desc;
     }
     public string Storm{

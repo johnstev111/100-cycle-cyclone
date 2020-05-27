@@ -4,8 +4,6 @@ using CycloneTools.Toolkit;
 
 namespace Cyclone {
   class Fifty {
-    [DllImport("tools.dll", CharSet = CharSet.Unicode)]
-    public static extern void ColouWrite(bool slow, string text, ConsoleColor col);
     public static void Main(string[] args) {
       MainTools.ColouWrite(true, "Welcome to the Fifty Cycle Cyclone!", ConsoleColor.Yellow);
       System.Threading.Thread.Sleep(576);
@@ -15,8 +13,8 @@ namespace Cyclone {
         cq += Convert.ToByte(1);
         Tornado main = new Tornado();
         Player You = new Player(main, cq);
-        Console.WriteLine(main.Name + " - " + main.Type);
-        Console.WriteLine(main.Storm);
+        //Console.WriteLine(main.Name + " - " + main.Desc);
+        //Console.WriteLine(main.Storm); << DEBUG
         You.Fight();
         MainTools.ColouWrite(true, "Would you like to fight another cyclone? (y/n)", ConsoleColor.DarkYellow);
         string there = Console.ReadLine();
