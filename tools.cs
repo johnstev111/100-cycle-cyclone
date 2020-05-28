@@ -1,5 +1,5 @@
 using System;
-
+// Be warned: THIS FILE IS FULL OF BAD CODE. Please be prepared to facepalm.
 namespace CycloneTools{
   namespace Toolkit {
     public class MainTools {
@@ -67,9 +67,9 @@ namespace CycloneTools{
         Desc = desc;
         Health = health;
         if (Health>=0){
-          Damage = Convert.ToSByte(8 * Math.Ceiling(Math.Sqrt(Math.Abs(Health))));
+          Damage = Convert.ToSByte(4 * Math.Ceiling(Math.Sqrt(Math.Abs(Health))));
         } else {
-          Damage = Convert.ToSByte(0 - (8 * Math.Ceiling(Math.Sqrt(Math.Abs(Health)))));
+          Damage = Convert.ToSByte(0 - (4 * Math.Ceiling(Math.Sqrt(Math.Abs(Health)))));
         }
       }
     }
