@@ -10,21 +10,22 @@ namespace Cyclone {
     public sbyte Defence { get; set; }
     Tornado torn;
     byte cq;
-    private static readonly string[] items = {"Cabbage", "Diesel", "Generator", "God's Mirror"};
+    private static string[] items = {"Cabbage", "Sulphuric acid", "Generator", "God's Mirror"};
     public Player(Tornado enemy, byte count){
       torn = enemy;
       cq = count; // countq: used as an iterator in loops
-      Health = 127;
-      Defence = Convert.ToSByte(torn.Damage/2);
+      Defence = Convert.ToSByte(torn.Damage/3);
     }
+    public void Kill(int health){ if ((Convert.ToInt32(this.Health) - health)<-127) {this.Health = Convert.ToSByte(-127);} else {this.Health -= Convert.ToSByte(health);} }
     private void Menu() {
       while (true) {
+        System.Threading.Thread.Sleep(1414);
         Console.Clear();
         MainTools.ColouWrite(false, $"{torn.Storm}", ConsoleColor.Gray);
         MainTools.ColouWrite(false, $"{torn.Name}, {torn.Health} HP, {torn.Damage} Potential Danger\nYour Health: {this.Health}, Your Defence: {this.Defence}", ConsoleColor.DarkYellow);
         bool leave = false;
         byte chance = Convert.ToByte(new Random().Next(0, 5));
-        MainTools.ColouWrite(false, "[1] Fight\n[2] Go underground\n[3] Seek help", ConsoleColor.Cyan);
+        MainTools.ColouWrite(false, "[1] Fight\n[2] Seek help\n[3] Go underground or run away", ConsoleColor.Cyan);
         try { this.Option = Convert.ToByte(Console.ReadLine()); }
         catch { MainTools.ColouWrite(false, "Please input a number.", ConsoleColor.DarkYellow); continue; }
         finally {
@@ -33,13 +34,13 @@ namespace Cyclone {
             case 1:
               Chooser();
               break;
-            case 2:
+            case 3:
               if (chance!=1) {
                 MainTools.ColouWrite(true, $"You got blown away by the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red);
                 Environment.Exit(1);
               } else { MainTools.ColouWrite(true, "You managed to survive! You should be proud.", ConsoleColor.Cyan); leave = true; }
               break;
-            case 3:
+            case 2:
               if (chance!=1) {
                 MainTools.ColouWrite(true, "What a waste of time. There are no locals nearby, and the cyclone is approaching you faster than ever before.", ConsoleColor.DarkYellow);
                 torn.Add(10);
@@ -50,7 +51,6 @@ namespace Cyclone {
               break;
           }
         }
-        System.Threading.Thread.Sleep(1414);
         if (leave) { return; }
       }
     }
@@ -73,23 +73,25 @@ namespace Cyclone {
               if (chosen==items[0]) {
                 MainTools.ColouWrite(true, "You really thought that a cabbage'd do something didn't you. But no.", ConsoleColor.Green); leave = true;
               } else if (chosen==items[1]) {
-                MainTools.ColouWrite(true, "The diesel made the cyclone weaker! But I wouldn't say to keep using it...", ConsoleColor.Green);
-                torn.Kill(10); leave = true;
+                MainTools.ColouWrite(true, "The sulphuric acid made the cyclone weaker! But it's way too corrosive...", ConsoleColor.Green);
+                torn.Kill(20); leave = true;
               } else if (chosen==items[2]) {
                 MainTools.ColouWrite(true, "Oof. That generator ended up sparking the cyclone so much, it's now weaker!", ConsoleColor.Green);
                 torn.Kill((torn.Health)/2); leave = true;
               } else if (chosen==items[3]) {
-                MainTools.ColouWrite(true, $"No wonder it's called {items[3]}! It reflected the tornado! But made it stronger in the other direction...", ConsoleColor.Green);
-                torn.Kill(((torn.Health)*2)+20); leave = true;
+                MainTools.ColouWrite(true, $"No wonder it's called {items[3]}! It reflected the tornado, and damaged it!", ConsoleColor.Green);
+                torn.Kill(((torn.Health)*2)-20); leave = true;
               } else {
                 throw new IndexOutOfRangeException("Ughhh. You ran out of numbers. How did we get here?");
               }
             }
             this.Health-=Convert.ToSByte(torn.Damage-this.Defence);
-            if (Health<=0) { MainTools.ColouWrite(true, $"You died to the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red); }
+            if (this.Health<=0) { MainTools.ColouWrite(true, $"You died to the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red); Environment.Exit(1); }
+            if (torn.Health<=0) { MainTools.ColouWrite(true, $"You defeated the {torn.Name} Cyclone! The locals are praising you.", ConsoleColor.DarkYellow); leave = true; }
           }
-          if (leave) { return; }
+          if (leave) { break; }
         }            
+        return;
     }
     public void Fight() {
       Health = 127;
