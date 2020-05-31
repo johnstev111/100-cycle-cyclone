@@ -23,38 +23,34 @@ namespace Cyclone {
         Console.Clear();
         MainTools.ColouWrite(false, $"{torn.Storm}", ConsoleColor.Gray);
         MainTools.ColouWrite(false, $"{torn.Name}, {torn.Health} HP, {torn.Damage} Potential Danger\nYour Health: {this.Health}, Your Defence: {this.Defence}", ConsoleColor.DarkYellow);
-        bool leave = false;
         byte chance = Convert.ToByte(new Random().Next(0, 5));
         MainTools.ColouWrite(false, "[1] Fight\n[2] Seek help\n[3] Go underground or run away", ConsoleColor.Cyan);
         try { this.Option = Convert.ToByte(Console.ReadLine()); }
         catch { MainTools.ColouWrite(false, "Please input a number.", ConsoleColor.DarkYellow); continue; }
-        finally {
-          switch (this.Option)
-          {
-            case 1:
-              Chooser();
-              break;
-            case 3:
-              if (chance!=1) {
-                MainTools.ColouWrite(true, $"You got blown away by the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red);
-                Environment.Exit(1);
-              } else { MainTools.ColouWrite(true, "You managed to survive! You should be proud.", ConsoleColor.Cyan); leave = true; }
-              break;
-            case 2:
-              if (chance!=1) {
-                MainTools.ColouWrite(true, "What a waste of time. There are no locals nearby, and the cyclone is approaching you faster than ever before.", ConsoleColor.DarkYellow);
-                torn.Add(10);
-              } else { MainTools.ColouWrite(true, "You found help! Oh wait, it's a fish bowl.", ConsoleColor.DarkYellow); }
-              break;
-            default:
-              MainTools.ColouWrite(false, "Please input 1, 2, or 3.", ConsoleColor.DarkYellow);
-              break;
-          }
+        switch (this.Option)
+        {
+          case 1:
+            Chooser();
+            break;
+          case 3:
+            if (chance!=1) {
+              MainTools.ColouWrite(true, $"You got blown away by the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red);
+              Environment.Exit(1);
+            } else { MainTools.ColouWrite(true, "You managed to survive! You should be proud.", ConsoleColor.Cyan); return; }
+            break;
+          case 2:
+            if (chance!=1) {
+              MainTools.ColouWrite(true, "What a waste of time. There are no locals nearby, and the cyclone is approaching you faster than ever before.", ConsoleColor.DarkYellow);
+              torn.Add(10);
+            } else { MainTools.ColouWrite(true, "You found help! Oh wait, it's a fish bowl.", ConsoleColor.DarkYellow); }
+            break;
+           default:
+            MainTools.ColouWrite(false, "Please input 1, 2, or 3.", ConsoleColor.DarkYellow);
+            break;
         }
         this.Hurt(Convert.ToSByte(torn.Damage-this.Defence));
-        if (torn.Health<=0) { MainTools.ColouWrite(true, $"You defeated the {torn.Name} Cyclone! The locals are praising you.", ConsoleColor.DarkYellow); leave = true; }
+        if (torn.Health<=0) { MainTools.ColouWrite(true, $"You defeated the {torn.Name} Cyclone! The locals are praising you.", ConsoleColor.DarkYellow); return; }
         else if (this.Health<=0) { MainTools.ColouWrite(true, $"You died to the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red); Environment.Exit(1); }       
-        if (leave) { return; }
       }
     }
     private void Chooser() {
