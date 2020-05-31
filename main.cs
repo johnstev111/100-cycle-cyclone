@@ -10,7 +10,7 @@ namespace Cyclone {
       MainTools.ColouWrite(true, "The game where you have to defeat incoming cyclones, and stop them wreaking havoc!", ConsoleColor.DarkCyan);
       byte cq = 0;
       while (true) {
-        if (cq==1) { MainTools.ColouWrite(true, "You have recoevered to full health. The locals have given you some new tools.", ConsoleColor.Yellow); }
+        if (cq==1) { MainTools.ColouWrite(true, "You have recovered to full health. The locals have given you some new tools.", ConsoleColor.Yellow); }
         cq += Convert.ToByte(1);
         Tornado main = new Tornado();
         Player You = new Player(main, cq);
@@ -27,6 +27,7 @@ namespace Cyclone {
       string[] gifts = {"compass", "paper aeroplane", "cabbage", "telescope", "gold bar", "token", "fountain pen", "bottle of sand", "piece of coal", "large almond", "vanilla biscuit", "can of air", "sacred matchbox"};
       string gift = gifts[new Random().Next(0, gifts.Length)];
       MainTools.ColouWrite(true, $"Thank you for helping the locals. They give you gifts, such as a {gift}!", ConsoleColor.DarkYellow);
+      Environment.Exit(0);
     }
   }
 }

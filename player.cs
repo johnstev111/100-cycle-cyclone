@@ -14,9 +14,9 @@ namespace Cyclone {
     public Player(Tornado enemy, byte count){
       torn = enemy;
       cq = count; // countq: used as an iterator in loops
-      Defence = Convert.ToSByte(torn.Damage/3);
+      Defence = Convert.ToSByte(Math.Ceiling(Convert.ToDouble(torn.Damage)/3));
     }
-    public void Kill(int health){ if ((Convert.ToInt32(this.Health) - health)<-127) {this.Health = Convert.ToSByte(-127);} else {this.Health -= Convert.ToSByte(health);} }
+    public void Hurt(int health){ if ((Convert.ToInt32(this.Health) - health)<-127) {this.Health = Convert.ToSByte(-127);} else {this.Health -= Convert.ToSByte(health);} }
     private void Menu() {
       while (true) {
         System.Threading.Thread.Sleep(1414);
@@ -51,6 +51,9 @@ namespace Cyclone {
               break;
           }
         }
+        this.Hurt(Convert.ToSByte(torn.Damage-this.Defence));
+        if (torn.Health<=0) { MainTools.ColouWrite(true, $"You defeated the {torn.Name} Cyclone! The locals are praising you.", ConsoleColor.DarkYellow); leave = true; }
+        else if (this.Health<=0) { MainTools.ColouWrite(true, $"You died to the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red); Environment.Exit(1); }       
         if (leave) { return; }
       }
     }
@@ -85,9 +88,6 @@ namespace Cyclone {
                 throw new IndexOutOfRangeException("Ughhh. You ran out of numbers. How did we get here?");
               }
             }
-            this.Health-=Convert.ToSByte(torn.Damage-this.Defence);
-            if (this.Health<=0) { MainTools.ColouWrite(true, $"You died to the {torn.Name} Cyclone! The locals had faith in you.", ConsoleColor.Red); Environment.Exit(1); }
-            if (torn.Health<=0) { MainTools.ColouWrite(true, $"You defeated the {torn.Name} Cyclone! The locals are praising you.", ConsoleColor.DarkYellow); leave = true; }
           }
           if (leave) { break; }
         }            
