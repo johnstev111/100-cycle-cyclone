@@ -1,5 +1,5 @@
 using System;
-using CycloneTools.Toolkit;
+using Toolkit;
 // Hello. This took me a lot of effort to write. I hope you like it!
 namespace Cyclone {
   class Hundred {

@@ -1,5 +1,5 @@
 using System;
-using CycloneTools.Toolkit;
+using Toolkit;
 using System.Collections;
 
 namespace Cyclone {
@@ -16,7 +16,7 @@ namespace Cyclone {
       cq = count; // countq: used as an iterator in loops
       Defence = Convert.ToSByte(Math.Ceiling(Convert.ToDouble(torn.Damage)/3));
     }
-    public void Hurt(int health){ if ((Convert.ToInt32(this.Health) - health)<-127) {this.Health = Convert.ToSByte(-127);} else {this.Health -= Convert.ToSByte(health);} }
+    public void Hurt(int health){ if ((Convert.ToInt32(this.Health) - health)<-127) { this.Health = Convert.ToSByte(-127); } else { this.Health -= Convert.ToSByte(health); } }
     private void Menu() {
       while (true) {
         System.Threading.Thread.Sleep(1414);
@@ -66,8 +66,8 @@ namespace Cyclone {
             try { this.Item = Convert.ToByte(Console.ReadLine()); }
             catch { MainTools.ColouWrite(false, "Please input a number.", ConsoleColor.DarkYellow); continue; }
             finally {
-              if (Item>avail.Count) { MainTools.ColouWrite(false, $"Please input a number between 1 and {avail.Count}.", ConsoleColor.DarkYellow);}
-              else if (Item<1) { MainTools.ColouWrite(false, $"Please input a number between 1 and {avail.Count}.", ConsoleColor.DarkYellow);} else {
+              if (Item>avail.Count) { MainTools.ColouWrite(false, $"Please input a number between 1 and {avail.Count}.", ConsoleColor.DarkYellow); }
+              else if (Item<1) { MainTools.ColouWrite(false, $"Please input a number between 1 and {avail.Count}.", ConsoleColor.DarkYellow); } else {
               string chosen = avail[Item-1].ToString();
               if (chosen==items[0]) {
                 MainTools.ColouWrite(true, "You really thought that a cabbage'd do something didn't you. But no.", ConsoleColor.Green); leave = true;

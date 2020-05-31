@@ -1,5 +1,5 @@
 using System;
-using CycloneTools.Toolkit;
+using Toolkit;
 
 namespace Cyclone {
   public class Tornado {
@@ -31,7 +31,7 @@ namespace Cyclone {
       }
     } // Talk about bad code...
     public void Add(int health){
-      if ((Convert.ToInt32(this.Health) + health)>127) {this.Health = Convert.ToSByte(127);} else {this.Health += Convert.ToSByte(health);}
+      if ((Convert.ToInt32(this.Health) + health)>127) { this.Health = Convert.ToSByte(127); } else { this.Health += Convert.ToSByte(health); }
       if (Health>=0){
         Damage = Convert.ToSByte(4 * Math.Ceiling(Math.Sqrt(Math.Abs(Health))));
       } else {
@@ -39,7 +39,7 @@ namespace Cyclone {
       }
     }
     public void Kill(int health){
-      if ((Convert.ToInt32(this.Health) - health)<-127) {this.Health = Convert.ToSByte(-127);} else {this.Health -= Convert.ToSByte(health);}
+      if ((Convert.ToInt32(this.Health) - health)<-127) { this.Health = Convert.ToSByte(-127); } else { this.Health -= Convert.ToSByte(health); }
       if (Health>=0){
         Damage = Convert.ToSByte(4 * Math.Ceiling(Math.Sqrt(Math.Abs(Health))));
       } else {
