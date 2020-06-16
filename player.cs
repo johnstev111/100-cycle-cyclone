@@ -82,10 +82,10 @@ namespace Cyclone {
               } else if (chosen==items[3]) {
                 MainTools.ColouWrite(true, $"No wonder it's called {items[3]}! It reflected the tornado, and damaged it!", ConsoleColor.Green);
                 torn.Kill(((torn.Health)*2)-20); leave = true;
-              } else if (chosen==items[4]) {
+              } else if (chosen==items[5]) {
                 MainTools.ColouWrite(true, $"The {items[4]}! The WORSTENER OF STORMS.", ConsoleColor.Green);
                 torn.Add(40); leave = true;
-              } else if (chosen==items[5]) {
+              } else if (chosen==items[4]) {
                 MainTools.ColouWrite(true, "So sharp and pointy, you are a legend!", ConsoleColor.Green);
                 torn.Kill(60); leave = true;
               } else {
