@@ -18,7 +18,7 @@ namespace Toolkit {
     }
     public static StormData Case(){
       StormData torn;
-      byte fire = Convert.ToByte(new Random().Next(0, 16));
+      byte fire = (byte) (new Random().Next(18));
       switch (fire)
       {
         case 0:
@@ -68,6 +68,12 @@ namespace Toolkit {
           break;
         case 15:
           torn = new StormData("Loudspeaker", "This one blares your least favorite music at high volume at night.", 77);
+          break;
+        case 16:
+          torn = new StormData("Elastic Band", "This one is quite flexible!", 45);
+          break;
+        case 17:
+          torn = new StormData("Tin", "Exactly what it says on the tin.", 54);
           break;
         default:
           throw new IndexOutOfRangeException("Incorrect number in variable fire. How did we get here?");

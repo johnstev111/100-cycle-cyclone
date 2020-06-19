@@ -10,7 +10,7 @@ namespace Cyclone {
     public sbyte Defence { get; set; }
     Tornado torn;
     byte cq;
-    private static string[] items = {"Cabbage", "Sulphuric acid", "Generator", "God's Mirror", "Sharpened Sword", "Lightning Bolt"};
+    private static string[] items = {"Cabbage", "Sulphuric acid", "Generator", "God's Mirror", "Sharpened Sword", "Lightning Bolt", "Suitcase"};
     public Player(Tornado enemy, byte count){
       torn = enemy;
       cq = count; // countq: used as an iterator in loops
@@ -56,6 +56,7 @@ namespace Cyclone {
     private void Chooser() {
         ArrayList avail = new ArrayList();
         if ((cq%1)==0) { avail.Add(items[0]); avail.Add(items[1]); }
+        if ((cq%2)==0) { avail.Add(items[6]); }
         if ((cq%3)==0) { avail.Add(items[2]); }
         if ((cq%4)==0) { avail.Add(items[5]); }
         if ((cq%5)==0) { avail.Add(items[4]); }
@@ -83,11 +84,14 @@ namespace Cyclone {
                 MainTools.ColouWrite(true, $"No wonder it's called {items[3]}! It reflected the tornado, and damaged it!", ConsoleColor.Green);
                 torn.Kill(((torn.Health)*2)-20); leave = true;
               } else if (chosen==items[5]) {
-                MainTools.ColouWrite(true, $"The {items[4]}! The WORSTENER OF STORMS.", ConsoleColor.Green);
+                MainTools.ColouWrite(true, $"The {items[5]}! The WORSTENER OF STORMS.", ConsoleColor.Green);
                 torn.Add(40); leave = true;
               } else if (chosen==items[4]) {
                 MainTools.ColouWrite(true, "So sharp and pointy, you are a legend!", ConsoleColor.Green);
                 torn.Kill(60); leave = true;
+              } else if (chosen==items[6]) {
+                MainTools.ColouWrite(true, "Yikes. You begin to hope there was no luggage in there, until it gets dropped.", ConsoleColor.Green);
+                torn.Kill(32); leave = true;
               } else {
                 throw new IndexOutOfRangeException("Ughhh. You ran out of numbers. How did we get here?");
               }
