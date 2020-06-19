@@ -24,9 +24,8 @@ namespace Cyclone {
       }
     }
     public static void End() {
-      string[] gifts = {"compass", "paper aeroplane", "cabbage", "telescope", "gold bar", "token", "fountain pen", "bottle of sand", "piece of coal", "large almond", "vanilla biscuit", "can of air", "sacred matchbox"};
-      string gift = gifts[new Random().Next(0, gifts.Length)];
-      MainTools.ColouWrite(true, $"Thank you for helping the locals. They give you gifts, such as a {gift}!", ConsoleColor.DarkYellow);
+      string[] gifts = {"compass", "paper aeroplane", "cabbage", "telescope", "gold bar", "token", "fountain pen", "bottle of sand", "piece of coal", "large almond", "vanilla biscuit", "can of air", "sacred matchbox", "paper bridge", "cube", "flame", "firework"};
+      MainTools.ColouWrite(true, $"Thank you for helping the locals. They give you gifts, such as a {gifts[new Random().Next(0, gifts.Length)]}!", ConsoleColor.DarkYellow);
       Environment.Exit(0);
     }
   }
