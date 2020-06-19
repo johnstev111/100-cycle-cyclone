@@ -10,7 +10,7 @@ namespace Cyclone {
       MainTools.ColouWrite(true, "The game where you have to defeat incoming cyclones, and stop them wreaking havoc!", ConsoleColor.DarkCyan);
       byte cq = 0;
       while (true) {
-        if (cq==1) { MainTools.ColouWrite(true, "You have recovered to full health. The locals have given you some new tools.", ConsoleColor.Yellow); }
+        if (cq>=1) { MainTools.ColouWrite(true, "You have recovered to full health. The locals have given you some new tools.", ConsoleColor.Yellow); }
         cq += Convert.ToByte(1);
         Tornado main = new Tornado();
         Player You = new Player(main, cq);
