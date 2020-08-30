@@ -9,11 +9,8 @@ namespace Toolkit {
         foreach (char letter in text) {
           Console.Write(letter);
           System.Threading.Thread.Sleep(95);
-        }
-        Console.WriteLine();
-      } else {
-        Console.WriteLine(text);
-      }
+        } Console.WriteLine();
+      } else { Console.WriteLine(text); }
       Console.ForegroundColor = ConsoleColor.White;
     }
     public static StormData Case(){
@@ -64,7 +61,7 @@ namespace Toolkit {
           torn = new StormData("Dwarf", "Throws dwarves everywhere, very dangerous to us!", 118);
           break;
         case 14:
-          torn = new StormData("Pork", "Er... Oink?", 49);
+          torn = new StormData("Pork Chop", "Er... Oink?", 49);
           break;
         case 15:
           torn = new StormData("Loudspeaker", "This one blares your least favorite music at high volume at night.", 77);

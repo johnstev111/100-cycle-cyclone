@@ -1,6 +1,6 @@
 using System;
 using Toolkit;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Cyclone {
   public class Player {
@@ -54,7 +54,7 @@ namespace Cyclone {
       }
     }
     private void Chooser() {
-        ArrayList avail = new ArrayList();
+        List<string> avail = new List<string>();
         if ((cq%1)==0) { avail.Add(items[0]); avail.Add(items[1]); }
         if ((cq%2)==0) { avail.Add(items[6]); }
         if ((cq%3)==0) { avail.Add(items[2]); }
@@ -82,7 +82,7 @@ namespace Cyclone {
                 torn.Kill((torn.Health)/2); leave = true;
               } else if (chosen==items[3]) {
                 MainTools.ColouWrite(true, $"No wonder it's called {items[3]}! It reflected the tornado, and damaged it!", ConsoleColor.Green);
-                torn.Kill(((torn.Health)*2)-20); leave = true;
+                torn.Kill(torn.Health); torn.Kill(torn.Health); torn.Kill(20); leave = true;
               } else if (chosen==items[5]) {
                 MainTools.ColouWrite(true, $"The {items[5]}! The WORSTENER OF STORMS.", ConsoleColor.Green);
                 torn.Add(40); leave = true;
